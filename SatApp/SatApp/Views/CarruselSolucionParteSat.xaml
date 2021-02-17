@@ -35,7 +35,7 @@
                 <Label x:Name="lblSolucion" Text="Solución" Grid.Row="0" StyleClass="labelCabecera" />
                 <Editor x:Name="entrySolucion" Text="{Binding Solucion}" AutoSize="TextChanges" Scale="0.8" HorizontalOptions="FillAndExpand" Grid.Row="1" StyleClass="labelDetalle" Unfocused="Guardar"/>
                 <Label x:Name="lblObservaciones" Text="Observaciones" Grid.Row="2" StyleClass="labelCabecera"/>
-                <Editor x:Name="entryObservaciones" Text="{Binding Observaciones}" AutoSize="TextChanges" Scale="0.8" HorizontalOptions="FillAndExpand" Grid.Row="3" StyleClass="labelDetalle" Unfocused="Guardar"/>
+                <Editor x:Name="entryObservaciones" Text="{Binding Observaciones}" AutoSize="TextChanges" Scale="0.8" HorizontalOptions="FillAndExpand" Grid.Row="3"  StyleClass="labelDetalle" Unfocused="Guardar"/>
             </Grid>
         </ScrollView>
     </ContentPage.Content>

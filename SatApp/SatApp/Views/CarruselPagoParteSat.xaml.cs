@@ -16,37 +16,37 @@ namespace SatApp.Views
         {
             InitializeComponent();
 
-            //    RepositorySatApp database = new RepositorySatApp();
+            RepositorySatApp database = new RepositorySatApp();
 
-            //    Funciones funciones = new Funciones();
+            Funciones funciones = new Funciones();
 
-            //    var formaPago = database.ObtenerFormaPago(Variables.DatosParte.FormaPago);
-            //    if (formaPago != null)
-            //        txtFormaPago.Text = formaPago.Descripcion;
+            var formaPago = database.ObtenerFormaPago(Variables.DatosParte.FormaPago);
+            if (formaPago != null)
+                txtFormaPago.Text = formaPago.Descripcion;
 
-            //    if (Variables.BloqueaParte)
-            //    {
-            //        if (Variables.RevisaParte)
-            //        {
-            //            if ((Variables.DatosParte.Revisar == true) && (Variables.DatosParte.Realizado == false) && Variables.DatosParte.FechaEnvioApp == "1900-12-30 00:00:00.000")
-            //            {
-            //                txtFormaPago.IsEnabled = false;
-            //                ImgFormaPago.IsEnabled = false;
-            //            }
+            if (Variables.BloqueaParte)
+            {
+                if (Variables.RevisaParte)
+                {
+                    if ((Variables.DatosParte.Revisar == true) && (Variables.DatosParte.Realizado == false) && Variables.DatosParte.FechaEnvioApp == "1900-12-30 00:00:00.000")
+                    {
+                        txtFormaPago.IsEnabled = false;
+                        ImgFormaPago.IsEnabled = false;
+                    }
 
-            //        }
-            //        else if (!Variables.RevisaParte)
-            //        {
-            //            if ((Variables.DatosParte.Realizado == true) && (Variables.DatosParte.Revisar == false) && Variables.DatosParte.FechaEnvioApp == "1900-12-30 00:00:00.000")
-            //            {
-            //                txtFormaPago.IsEnabled = false;
-            //                ImgFormaPago.IsEnabled = false;
-            //            }
-            //        }
-            //    }
-            //    funciones.CalcularParte(Variables.DatosParte.N_Parte);
-            //    database.CerrarConexion();
-         }
+                }
+                else if (!Variables.RevisaParte)
+                {
+                    if ((Variables.DatosParte.Realizado == true) && (Variables.DatosParte.Revisar == false) && Variables.DatosParte.FechaEnvioApp == "1900-12-30 00:00:00.000")
+                    {
+                        txtFormaPago.IsEnabled = false;
+                        ImgFormaPago.IsEnabled = false;
+                    }
+                }
+            }
+            funciones.CalcularParte(Variables.DatosParte.N_Parte);
+            database.CerrarConexion();
+        }
 
             public void OnPopupUnitsCallback(object sender, EventArgs e)
             {

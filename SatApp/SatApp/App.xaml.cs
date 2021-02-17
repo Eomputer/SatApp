@@ -12,7 +12,9 @@ namespace SatApp
         {
             InitializeComponent();
 
-            AppCenter.Start("bcc4cb1e-975a-4379-bcd5-1756e9ce4e24", typeof(Analytics), typeof(Crashes));
+
+            //Clave para el AppCenter para diagnostico de error Log.
+            AppCenter.Start("cb99de83-7323-4aa3-8338-2ea67a68bb42", typeof(Analytics), typeof(Crashes));
 
 
             MainPage = new Principal();

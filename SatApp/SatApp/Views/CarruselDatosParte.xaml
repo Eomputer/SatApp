@@ -18,7 +18,7 @@
 
     <ContentPage.Content>
         <ScrollView>
-            <Grid x:Name="LayoutRoot" BackgroundColor="#F4F7F7" BindingContext="{Binding DatosParte}" Padding="10">
+            <Grid x:Name="LayoutRoot" BackgroundColor="Transparent" BindingContext="{Binding DatosParte}" Padding="10">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="30" />
                     <RowDefinition Height="30" />
@@ -40,6 +40,16 @@
                     <ColumnDefinition Width="Auto" />
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
+
+                <RelativeLayout Grid.Row="0" Grid.RowSpan="9" Grid.ColumnSpan="10">
+                    <Image
+                        Aspect="AspectFill"
+                        Source="FondoApp.jpg"
+                        RelativeLayout.WidthConstraint= "{ConstraintExpression Type=RelativeToParent,Property=Width}"
+                        RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height}">
+                    </Image>
+                </RelativeLayout>
+                
 
                 <Label x:Name="lblN_parte" Text="Nº Parte" Grid.Row="0" Grid.Column="0" StyleClass="labelCabecera"/>
                     <Label x:Name="N_parte" Text="{Binding N_Parte}" Grid.Row="0" Grid.Column="1" StyleClass="labelDetalle" />

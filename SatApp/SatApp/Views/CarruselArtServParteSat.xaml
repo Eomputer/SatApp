@@ -88,7 +88,7 @@
                                         <RowDefinition Height="Auto"/>
                                         <RowDefinition Height="Auto"/>
                                     </Grid.RowDefinitions>
-                                    
+
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="Auto"/>
                                         <ColumnDefinition Width="65"/>
@@ -97,6 +97,7 @@
                                         <ColumnDefinition Width="Auto"/>
                                         <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
+
 
                                     <Label x:Name="lblDescripcion" Text="Desc: " FontSize="Small" Grid.Row="0" Grid.Column="0" StyleClass="labelCabecera" />
                                     <Label x:Name="lblListaDescripcion" Text="{Binding Descripcion}" FontSize="Small" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="5" HorizontalOptions="StartAndExpand" StyleClass="labelDetalle"/>
