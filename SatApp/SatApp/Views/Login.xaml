@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SatApp.Views.Login">
+    <ContentPage.Content>
+        <ScrollView>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="60"/>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <RelativeLayout Grid.Row="0" Grid.RowSpan="8" Grid.ColumnSpan="3">
+                    <Image
+                        Aspect="AspectFill"
+                        Source="FondoApp.jpg"
+                        RelativeLayout.WidthConstraint= "{ConstraintExpression Type=RelativeToParent,Property=Width}"
+                        RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height}">
+                    </Image>
+                </RelativeLayout>
+
+                <StackLayout Grid.Row="1" Grid.Column="1">
+                    <Image x:Name="logotipo" Aspect="AspectFit" Source="logo.png" HeightRequest="100" WidthRequest="100" HorizontalOptions="CenterAndExpand"/>
+                </StackLayout>
+
+                <Entry  x:Name="Usuario" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" TextColor="Black" Scale="0.7" Placeholder="Usuario" PlaceholderColor="Black" Keyboard="Numeric" FontSize="18" HorizontalTextAlignment="Start"/>
+                <Entry  x:Name="Pass" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" TextColor="Black" Scale="0.7" Placeholder="Password" PlaceholderColor="Black" IsPassword="True" FontSize="18" HorizontalTextAlignment="Start"/>
+                <Button 
+                    x:Name="BtnLogin"
+                    Clicked="BtnLogin_Clicked"
+                    VerticalOptions="CenterAndExpand"
+                    HorizontalOptions="Center"
+                    Grid.Row="5" Grid.Column="1"
+                    BackgroundColor="Transparent">
+                    <Button.Image>
+                        <OnPlatform x:TypeArguments="FileImageSource"
+                         iOS="flechaderecha.png"
+                         Android="flechaderecha.png" />
+                    </Button.Image>
+                </Button>
+
+                <ContentView x:Name="popupLoadingView" BackgroundColor="Transparent" Padding="10, 0" IsVisible="false" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="3" >
+                    <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                        <StackLayout Orientation="Vertical" HeightRequest="20" WidthRequest="200" BackgroundColor="Transparent">
+                            <Label x:Name="lblLoadingText" TextColor="#137F7F"  VerticalOptions="Center" HorizontalOptions="Center" VerticalTextAlignment="Center" ></Label>
+                        </StackLayout>
+                    </StackLayout>
+                </ContentView>
+
+                <StackLayout Grid.Row="7" Grid.ColumnSpan="3" Padding="10">
+                    <Label  Text="Descargar partes: "  HorizontalTextAlignment="Center"   FontSize="15" TextColor="#137F7F" />
+                    <Switch x:Name="CargarDatos" HorizontalOptions="Center"  IsToggled="false" OnColor="Green" />
+                    <Image  Aspect="AspectFit" Source="ecomputer.png" HeightRequest="30" WidthRequest="130" VerticalOptions="EndAndExpand" HorizontalOptions="CenterAndExpand" />
+                </StackLayout>
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

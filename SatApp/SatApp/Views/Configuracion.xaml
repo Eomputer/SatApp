@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SatApp.Views.Configuracion">
+    <ContentPage.Content>
+        <ScrollView>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="60" />
+                    <RowDefinition Height="20"/>
+                    <RowDefinition Height="60" />
+                    <RowDefinition Height="60" />
+                    <RowDefinition Height="25" />
+                    <RowDefinition Height="60" />
+                    <RowDefinition Height="100" />
+                    <RowDefinition Height="60" />
+                    <RowDefinition Height="100" />
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <RelativeLayout Grid.Row="0" Grid.RowSpan="9" Grid.ColumnSpan="3">
+                    <Image
+                        Aspect="AspectFill"
+                        Source="FondoApp.jpg"
+                        RelativeLayout.WidthConstraint= "{ConstraintExpression Type=RelativeToParent,Property=Width}"
+                        RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height}">
+                    </Image>
+                </RelativeLayout>
+
+                <BoxView  Grid.Row="0" Grid.ColumnSpan="3"/>
+                <Label    Grid.Row="0" Grid.ColumnSpan="3" Text="CONFIGURACIÓN" HorizontalOptions="Center" VerticalOptions="Center" FontSize="20" TextColor="#137F7F" FontAttributes="Bold" />
+
+                <BoxView  Grid.Row="1" Grid.ColumnSpan="3"  />
+                <Label    Grid.Row="1" Grid.ColumnSpan="3" Text="Servidor" HorizontalOptions="Center" VerticalOptions="Center" FontSize="15" TextColor="#137F7F" FontAttributes="Bold"/>
+
+                <BoxView   Grid.Row="2" Grid.ColumnSpan="3"  />
+                <Entry     x:Name="Servidor" Grid.Row="2" Grid.ColumnSpan="3" TextColor="Gray" Scale="0.7" Placeholder="Servidor" PlaceholderColor="Gray" FontSize="18" HorizontalOptions="FillAndExpand" 
+                           HorizontalTextAlignment="Start"/>
+
+                <BoxView  Grid.Row="3" Grid.ColumnSpan="3"  />
+                <Entry    x:Name="Puerto" Grid.Row="3" Grid.ColumnSpan="3" TextColor="Gray" Scale="0.7" Placeholder="Puerto" PlaceholderColor="Gray" FontSize="18" HorizontalOptions="FillAndExpand" 
+                          HorizontalTextAlignment="Start" />
+
+                <Switch  Grid.Row="4"  Grid.Column="2" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" IsToggled="false" OnColor="Green"/>
+                <Label   Grid.Row="4" Grid.Column="1" Text="Bloquear parte" FontSize="15" TextColor="Black" HorizontalOptions="CenterAndExpand" />
+
+                <Label   Grid.Row="5" Grid.Column="1" Text="IMPRESORA" FontSize="15" HorizontalOptions="CenterAndExpand" TextColor="Black"/>
+                <Image   Grid.Row="5" Grid.Column="1" Source="lupa.png" HorizontalOptions="CenterAndExpand" Margin="0,25,0,-20"></Image>
+
+                <ListView x:Name="DispositivosLista" BackgroundColor="Transparent" Grid.Row="6" Grid.ColumnSpan="3" HeightRequest="175" Margin="0,25,0,-20">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout>
+                                    <Label Text="" FontSize="Small" />
+                                    <Label Text="" FontSize="Small" />
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+                <ContentView x:Name="popupLoadingView" BackgroundColor="Transparent" Padding="10, 0" IsVisible="false" Grid.Row="6" Grid.ColumnSpan="3">
+                    <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                        <StackLayout Orientation="Vertical" HeightRequest="150" WidthRequest="200" BackgroundColor="Transparent">
+                            <ActivityIndicator x:Name="activityIndicator" Margin="0,50,0,0" VerticalOptions="Center" HorizontalOptions="Center" Color="#137F7F" WidthRequest="30" HeightRequest="30" ></ActivityIndicator>
+                            <Label x:Name="lblLoadingText" TextColor="#137F7F"  VerticalOptions="Center" HorizontalOptions="Center" VerticalTextAlignment="Center" Text="Descargando datos..."></Label>
+                        </StackLayout>
+                    </StackLayout>
+                </ContentView>
+
+                <Label Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="3" Text="BASE DE DATOS" FontSize="20" HorizontalOptions="CenterAndExpand" TextColor="Black" Margin="0,40,0,-20"/>
+
+                <Button 
+                    x:Name="BtnSincroniza"
+                    Clicked="BtnSincroniza_Clicked"
+                    VerticalOptions="CenterAndExpand"
+                    HorizontalOptions="Center"
+                    Grid.Row="8" Grid.Column="0"
+                    WidthRequest ="80"
+                    HeightRequest ="80"
+                    CornerRadius ="80">
+                    <Button.Image >
+                        <OnPlatform x:TypeArguments="FileImageSource"
+                         iOS="apilado.png"
+                         Android="apilado.png" />
+                    </Button.Image>
+                </Button>
+
+                <Button 
+                    x:Name="BtnConfiguracion"
+                    Clicked="BtnConfiguracion_Clicked"
+                    VerticalOptions="CenterAndExpand"
+                    HorizontalOptions="Center"
+                    Grid.Row="8" Grid.Column="1"
+                    WidthRequest ="80"
+                    HeightRequest ="80"
+                    CornerRadius ="40">
+                    <Button.Image >
+                        <OnPlatform x:TypeArguments="FileImageSource"
+                         iOS="diskette.png"
+                         Android="diskette.png" />
+                    </Button.Image>
+                </Button>
+
+                <Button 
+                        x:Name="BtnEliminaBBDD"
+                        Clicked="BtnEliminaBBDD_Clicked"
+                        VerticalOptions="CenterAndExpand"
+                        HorizontalOptions="Center"
+                        Grid.Row="8" Grid.Column="2"
+                        WidthRequest ="80"
+                        HeightRequest ="80"
+                        CornerRadius ="40">
+                    <Button.Image >
+                        <OnPlatform x:TypeArguments="FileImageSource"
+                             iOS="menos.png"
+                             Android="menos.png" />
+                    </Button.Image>
+                </Button>
+
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

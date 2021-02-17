@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:local="clr-namespace:SatApp.VistasModelos"
+             mc:Ignorable="d"
+             x:Class="SatApp.Views.CarruselArtServParteSat"
+             Title="Servicios Parte Sat">
+
+    <ContentPage.BindingContext>
+        <local:ArtServParteSAT_VM />
+    </ContentPage.BindingContext>
+    
+    <ContentPage.Content>
+        <ScrollView>
+            <Grid BackgroundColor="#F4F7F7" Padding="10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <SearchBar x:Name="Busqueda" Placeholder="Buscar ..." HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" SearchButtonPressed="Busqueda_SearchButtonPressed" Focused="ObtieneFoco"/>
+                <Label x:Name="lblArt" Text="Art. Varios" HorizontalOptions="End" VerticalTextAlignment="Center"  IsVisible="true" Grid.Row="0" Grid.Column="2"/>
+                <Switch x:Name="switchVarios" HorizontalOptions="End"  Grid.Row="0" Grid.Column="3" Toggled="CargaArticuloVarios" />
+
+                <Grid x:Name="LayoutRoot" Grid.Row="1" Grid.ColumnSpan="4" >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <StackLayout Grid.Row="0" Orientation="Horizontal" BackgroundColor="White" >
+                        <Button x:Name="btnListarArticulos" Text="Articulos" HorizontalOptions="FillAndExpand" Grid.Column="0" Grid.ColumnSpan="2" BackgroundColor="#0A4343" Clicked="Articulos_Clicked" TextColor="White" BorderColor="#137F7F"/>
+                        <Button x:Name="btnListarServicios" Text="Servicios" HorizontalOptions="FillAndExpand" Grid.Column="2" Grid.ColumnSpan="2" BackgroundColor="#137F7F" Clicked="Servicios_Clicked" TextColor="White" BorderColor="#137F7F"/>
+                    </StackLayout>
+                    <StackLayout Grid.Row="1" Orientation="Horizontal">
+                        <Label x:Name="lblReferencia" Text="Referencia" Scale="0.7" FontSize="Small" Grid.Column="0"/>
+                        <Entry x:Name="txtReferencia" TextColor="Black" Scale="0.7" Placeholder="Ref / Cod Proveedor" FontSize="Small" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" Grid.Column="1" Grid.ColumnSpan="2" Focused="ObtieneFoco" />
+
+                        <Image x:Name="imgBuscarArt" Aspect="AspectFit" Source="lupa.png" HeightRequest="25" WidthRequest="25" HorizontalOptions="Start" Grid.Column="4">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                            </Image.GestureRecognizers>
+                        </Image>
+                    </StackLayout>
+                    <StackLayout Grid.Row="2" Orientation="Horizontal">
+                        <Label x:Name="lblNombre" Text="Descripcion" Scale="0.7" FontSize="Small" Grid.Column="0"/>
+                        <Entry x:Name="txtNombre" TextColor="Black" Scale="0.7" Placeholder="Descripcion" FontSize="Small" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" Grid.Column="1" Grid.ColumnSpan="2"/>
+                    </StackLayout>
+                    <StackLayout Grid.Row="3" Orientation="Horizontal">
+                        <Label x:Name="lblBase" Text="Base" Scale="0.7" FontSize="Small" Grid.Column="0"/>
+                        <Entry x:Name="txtBase" TextColor="Black" Scale="0.7" Placeholder="Base" FontSize="Small" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" Grid.Column="1" Keyboard="Telephone"/>
+                        <Label x:Name="lblCantidad" Text="Cantidad" Scale="0.7" FontSize="Small" Grid.Column="0"/>
+                        <Entry x:Name="txtCantidad" TextColor="Black" Scale="0.7" Placeholder="Cantidad" FontSize="Small" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" Grid.Column="1" Grid.ColumnSpan="2" Keyboard="Numeric"/>
+                    </StackLayout>
+                    <StackLayout Grid.Row="4" Orientation="Horizontal">
+
+                        <Label x:Name="lblDto" Text="Dto" Scale="0.7" FontSize="Small" Grid.Column="0"  HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start"/>
+                        <Entry x:Name="txtDto" TextColor="Black" Scale="0.7" Placeholder="Dto" FontSize="Small" Grid.Column="1"  HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" Keyboard="Numeric" />
+                        <Label x:Name="lblTantoPorcierto" Text="% IVA" Scale="0.7" FontSize="Small" Grid.Column="2"  HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start"/>
+                        <Entry x:Name="txtTantoPorcierto" TextColor="Black" Scale="0.7" Placeholder="% IVA" FontSize="Small" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start" Grid.Column="3" IsEnabled="False" Keyboard="Numeric"/>
+                    </StackLayout>
+                </Grid>
+
+                <Image x:Name="imgAnadir" Aspect="AspectFit" Source="mas.png" HeightRequest="35" WidthRequest="35" VerticalOptions="Center" HorizontalOptions="Start"  Grid.Row="3" Grid.Column="0">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Anadir_Clicked" />
+                    </Image.GestureRecognizers>
+                </Image>
+                <Image x:Name="imgQR" Aspect="AspectFit" Source="codigobarras.png" HeightRequest="35" WidthRequest="35"  VerticalOptions="Center" HorizontalOptions="End"  Grid.Row="3" Grid.Column="3">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="QR_Clicked" />
+                    </Image.GestureRecognizers>
+                </Image>
+
+                <ListView x:Name="ListadoLineas" Grid.Row="4" Grid.ColumnSpan="4" HasUnevenRows="True" ItemsSource="{Binding LineasSAT}" Margin="0,20,0,10" >
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+                                    
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="65"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="20"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Label x:Name="lblDescripcion" Text="Desc: " FontSize="Small" Grid.Row="0" Grid.Column="0" StyleClass="labelCabecera" />
+                                    <Label x:Name="lblListaDescripcion" Text="{Binding Descripcion}" FontSize="Small" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="5" HorizontalOptions="StartAndExpand" StyleClass="labelDetalle"/>
+                                    <Label x:Name="lblReferencia" Text="Ref: " FontSize="Small" Grid.Row="1" Grid.Column="0" StyleClass="labelCabecera" />
+                                    <Label x:Name="lblListaReferencia" Text="{Binding Referencia}" FontSize="Small" Grid.Row="1" Grid.Column="1" StyleClass="labelDetalle" />
+                                    <Label x:Name="lblCantidad" Text="Ud: " FontSize="Small" Grid.Row="1" Grid.Column="2" StyleClass="labelCabecera" />
+                                    <Label x:Name="lblListaCantidad" Text="{Binding Cantidad}" FontSize="Small" Grid.Row="1" Grid.Column="3" StyleClass="labelDetalle" />
+                                    <Label x:Name="lblImporte" Text="€: " FontSize="Small" Grid.Row="1" Grid.Column="4" StyleClass="labelCabecera" />
+                                    <Label x:Name="lblListaImporte" Text="{Binding Importe}" FontSize="Small" Grid.Row="1" Grid.Column="5" StyleClass="labelDetalle" />
+                                    <Image x:Name="imgBorrar" Grid.Row="1" Grid.Column ="5" Aspect="AspectFit" Source="menos.png" HeightRequest="20" WidthRequest="20" HorizontalOptions="End">
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer x:Name="EliminarLinea" Tapped="EliminarLinea_Tapped" />
+                                        </Image.GestureRecognizers>
+                                    </Image>
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

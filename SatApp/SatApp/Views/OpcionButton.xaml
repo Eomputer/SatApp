@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:input="clr-namespace:Plugin.InputKit.Shared.Controls;assembly=Plugin.InputKit"
+             mc:Ignorable="d"
+             x:Class="SatApp.Views.OpcionButton">
+    <ContentPage.Content>
+     <ScrollView>
+        <Grid x:Name="LayoutOpcion" >
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+             
+
+                <Frame HasShadow="True"
+                       Grid.Row="0" 
+                       BackgroundColor="AliceBlue"  
+                       WidthRequest="100" 
+                       HeightRequest="450" 
+                       Margin="40"  
+                       VerticalOptions="CenterAndExpand" 
+                       x:Name="FrameOpcionCierre" 
+                       CornerRadius="10"
+                       BorderColor="#0033FF">
+                <StackLayout Grid.Row="0"  Orientation="Vertical" VerticalOptions="Center"  Margin="10">
+                    <Label Text="! Elija una opción antes de cerrar el parte !"
+                       FontSize ="20"
+                       TextColor ="Blue"
+                       VerticalOptions="Center">
+                    </Label>
+
+                    <StackLayout>
+
+                        <input:RadioButtonGroupView>
+                            <input:RadioButton x:Name="OptRealizado"  Text="Realizado"/>
+
+                            <input:RadioButton x:Name="OptPendRepuesto" Text="Pendiente"/>
+
+                            <input:RadioButton x:Name="OptPendPresupuesto" Text="Pendiente Presup." />
+
+                            <input:RadioButton x:Name="OptPendRecambio" Text="Pendiente Recambio" />
+
+                            <input:RadioButton x:Name="OptSinReparar" Text="Sin Reparar" />
+                            
+                        </input:RadioButtonGroupView>
+
+                       
+                        <Button Grid.Row="2" Text="Aceptar" VerticalOptions="Start"
+                        HorizontalOptions="FillAndExpand"
+                        BackgroundColor="#99CCFF "
+                        Margin="0,40,0,0"
+                        x:Name="BtnAceptar"
+                        CornerRadius="10"
+                        Clicked ="BtnAceptar_Clicked"/>
+
+                        <Button Grid.Row="2" Text="Cancelar" VerticalOptions="Start"
+                        HorizontalOptions="FillAndExpand" 
+                        BackgroundColor="#99CCFF "
+                        x:Name="BtnCancelar"
+                        CornerRadius="10"
+                        Clicked ="BtnCancelar_Clicked"/>
+                    </StackLayout>
+                </StackLayout>
+                </Frame>
+            </Grid>
+            
+      </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
+

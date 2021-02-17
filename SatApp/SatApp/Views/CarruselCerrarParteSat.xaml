@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="SatApp.Views.CarruselCerrarParteSat"
+             Title="Cerrar Parte">
+    <ContentPage.Content>
+        <ScrollView>
+            <Grid x:Name="LayoutRoot" BackgroundColor="White">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <StackLayout Grid.Row="0" Orientation="Vertical" Margin="60,50,40,0">
+                    <StackLayout Orientation="Vertical" VerticalOptions="Center" Margin="0,0,0,0" BackgroundColor="White">
+                        <Image x:Name="btnConfig" Aspect="AspectFit" Source="candadoabierto.png" HeightRequest="80" WidthRequest="80" HorizontalOptions="Center">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="VistaOptionCierre"/>
+                            </Image.GestureRecognizers>
+                        </Image>
+
+                    </StackLayout>
+                </StackLayout>
+
+                <StackLayout Grid.Row="1" Orientation="Vertical" Margin="60,50,40,0">
+                    <StackLayout Orientation="Horizontal" VerticalOptions="Center" Margin="0,0,0,0" BackgroundColor="White">
+                        <Label x:Name="lblTexto" Text="Es necesario finalizar y cerrar la tarea antes de imprimir el ticket" FontSize="Medium" XAlign="Center" YAlign="Center" TextColor="#737373"/>
+                    </StackLayout>
+                </StackLayout>
+
+                <StackLayout Grid.Row="2" Orientation="Vertical" Margin="60,50,40,0">
+                    <StackLayout Orientation="Vertical" VerticalOptions="Center" Margin="0,0,0,0" BackgroundColor="White">
+                        <Image x:Name="btnImprimir" Aspect="AspectFit" Source="impresora.png" HeightRequest="100" WidthRequest="100" HorizontalOptions="Center" IsEnabled="false">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="BusquedaDispositivo"/>
+                            </Image.GestureRecognizers>
+                        </Image>
+                      
+                    </StackLayout>
+                </StackLayout>
+
+                <ContentView x:Name="popupLoadingView" BackgroundColor="White" Padding="10, 0" IsVisible="false" Grid.Row="3">
+                    <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                        <StackLayout Orientation="Vertical" HeightRequest="150" WidthRequest="200" BackgroundColor="White">
+                            <ActivityIndicator x:Name="activityIndicator" Margin="0,50,0,0" VerticalOptions="Center" HorizontalOptions="Center" Color="#137F7F" WidthRequest="30" HeightRequest="30" ></ActivityIndicator>
+                            <Label x:Name="lblLoadingText" TextColor="#137F7F"  VerticalOptions="Center" HorizontalOptions="Center" VerticalTextAlignment="Center" Text="Descargando datos..."></Label>
+                        </StackLayout>
+                    </StackLayout>
+                </ContentView>
+
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

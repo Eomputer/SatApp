@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:ViewModels="clr-namespace:SatApp.VistasModelos"
+             mc:Ignorable="d"
+             x:Class="SatApp.Views.CarruselPagoParteSat"
+             Title="Pago Parte"
+             BackgroundColor="#F4F7F7">
+
+    <ContentPage.BindingContext>
+        <ViewModels:FormaPago_VM/>
+    </ContentPage.BindingContext>
+    
+    <ContentPage.Content>
+        <ScrollView>
+            <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Padding="10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <StackLayout Grid.Row="0" Orientation="Horizontal">
+                    <Label x:Name="lblFormaPago" Text="Forma de Pago" Grid.Column="0" StyleClass="labelCabecera"/>
+                    <Entry x:Name="txtFormaPago" TextColor="Black" Grid.Column="1" Scale="0.7" Placeholder="Forma de Pago" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Start"  Grid.ColumnSpan="2" IsEnabled="False" StyleClass="labelDetalle"/>
+                    <Image x:Name="ImgFormaPago" Source="lupa.png" HeightRequest="25" WidthRequest="25" HorizontalOptions="End">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer x:Name="BuscarFormaPago" Tapped="BuscarFormaPago_Tapped" />
+                        </Image.GestureRecognizers>
+                    </Image>
+                </StackLayout>
+                <StackLayout Grid.Row="1" Orientation="Horizontal">
+                    <Grid x:Name="grid"  Grid.Row="1" Grid.Column="0"  BindingContext="{Binding DatosParte}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="30" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+
+                        <Label x:Name="lblTotaBase" Text="Base" Grid.Row="1" Grid.Column="0" StyleClass="labelCabecera"/>
+                        <Label x:Name="TotalBase" Text="{Binding Base_Total}" Grid.Row="1" Grid.Column="1" StyleClass="labelDetalle"/>
+                        <Label x:Name="lblTotalIVA" Text="IVA" Grid.Row="2" Grid.Column="0" StyleClass="labelCabecera"/>
+                        <Label x:Name="TotalIVA" Text="{Binding Iva_Total}" Grid.Row="2" Grid.Column="1" StyleClass="labelDetalle"/>
+                        <Label x:Name="lblTotalDescuento" Text="Dto" Grid.Row="3" Grid.Column="0" StyleClass="labelCabecera"/>
+                        <Label x:Name="TotalDescuento" Text="{Binding Descuento_Total}" Grid.Row="3" Grid.Column="1" StyleClass="labelDetalle"/>
+                        <Label x:Name="lblTotal" Text="TOTAL" Grid.Row="4" Grid.Column="0" StyleClass="labelCabecera"/>
+                        <Label x:Name="Total" Text="{Binding Total}" Grid.Row="4" Grid.Column="1" StyleClass="labelDetalle"/>
+                    </Grid>
+                </StackLayout>
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

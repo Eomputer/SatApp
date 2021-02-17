@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:local="clr-namespace:SatApp.VistasModelos"
+             mc:Ignorable="d"
+             x:Class="SatApp.Views.CarruselSolucionParteSat"
+             Title="Solución Parte">
+
+    <ContentPage.Resources>
+        <StyleSheet Source="/Estilos/styles.css"/>
+    </ContentPage.Resources>
+
+    <ContentPage.BindingContext>
+        <local:SolucionParteSAT_VM />
+    </ContentPage.BindingContext>
+    
+    <ContentPage.Content>
+        <ScrollView>
+            <Grid BackgroundColor="#F4F7F7" BindingContext="{Binding DatosParte}" Padding="10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="30" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <Label x:Name="lblSolucion" Text="Solución" Grid.Row="0" StyleClass="labelCabecera" />
+                <Editor x:Name="entrySolucion" Text="{Binding Solucion}" AutoSize="TextChanges" Scale="0.8" HorizontalOptions="FillAndExpand" Grid.Row="1" StyleClass="labelDetalle" Unfocused="Guardar"/>
+                <Label x:Name="lblObservaciones" Text="Observaciones" Grid.Row="2" StyleClass="labelCabecera"/>
+                <Editor x:Name="entryObservaciones" Text="{Binding Observaciones}" AutoSize="TextChanges" Scale="0.8" HorizontalOptions="FillAndExpand" Grid.Row="3" StyleClass="labelDetalle" Unfocused="Guardar"/>
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

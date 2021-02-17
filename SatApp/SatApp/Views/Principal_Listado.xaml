@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:ViewModels1="clr-namespace:SatApp.VistasModelos"
+             x:Class="SatApp.Views.Principal_Listado">
+    <ContentPage.Resources>
+        <StyleSheet Source="/Estilos/styles.css"/>
+    </ContentPage.Resources>
+
+    <!--Contenido de la página. Se añada la vista de moldelo que la que cuelga.
+    En la vista del modelo estrán todos los métodos que necesitemos.-->
+    <ContentPage.BindingContext>
+        <ViewModels1:SAT_VM/>
+    </ContentPage.BindingContext>
+
+    <!--Barra superior-->
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Name="icono" Order="Primary"  Icon="logo2.png" Text="" Priority="0"  Clicked="EnvioMasivo"/>
+        <ToolbarItem Name="1" Text="" />
+        <ToolbarItem Name="2" Text=" " />
+        <ToolbarItem Name="3" Text=" " />
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+        <ScrollView>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="490"/>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <RelativeLayout Grid.Row="0" Grid.RowSpan="2" >
+                    <Image
+                        Aspect="AspectFill"
+                        Source="FondoApp.jpg"
+                        RelativeLayout.WidthConstraint= "{ConstraintExpression Type=RelativeToParent,Property=Width}"
+                        RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,Property=Height}">
+                    </Image>
+                </RelativeLayout>
+
+                <!--Listado de elementos de la pantalla. -->
+                <ListView Grid.Row="0" Grid.RowSpan="2" x:Name="listado" ItemsSource="{Binding ListadoPartes}"
+                    ItemTapped="Handle_ItemTapped"
+                    HasUnevenRows="True"
+                    IsPullToRefreshEnabled="True"
+                    SeparatorColor="#F91212"
+                    SelectionMode="None">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout x:Name="LayoutParte" Padding="10" Spacing="2" BackgroundColor="{Binding Color}">
+                                    <Label Text="{Binding N_Parte}" FontAttributes="Bold" TextColor="#503026"
+                            StyleClass="labelCabecera" />
+                                    <Label Text="{Binding Nombre_Comercial}" 
+                            StyleClass="labelDetalle" />
+                                    <Label Text="{Binding NombreCliente }" 
+                            StyleClass="labelDetalle" />
+                                    <Label Text="{Binding DireccionParte}" 
+                            StyleClass="labelDetalle" />
+                                    <Label Text="{Binding AnomaliaParte}" 
+                            StyleClass="labelDetalle" />
+                                    <Label Text="{Binding TelefonoCliente}" FontAttributes="Bold"  TextColor="#f35e20"
+                            StyleClass="labelDetalle" />
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,30 @@
+﻿contenPage {
+    background-color: black;
+}
+
+navigationBar {
+    background-color: white;
+}
+
+nav {
+    background-color: #137f7f;
+}
+
+text {
+    color: blue;
+}
+
+
+.labelCabecera {
+    font-style: bold;
+    font-size: small;
+}
+
+.labelDetalle {
+    font-style: italic;
+    font-size: smaller
+}
+
+.fondoCarrusel {
+    background-color: #1E5C9A;
+}
